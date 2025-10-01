@@ -274,6 +274,9 @@ spawn-at-startup "kdeconnectd"
 spawn-at-startup "kdeconnect-indicator"
 spawn-at-startup "swaync"
 
+//screenshare support etc.
+spawn-sh-at-startup "xdg-desktop-portal-gtk"
+spawn-sh-at-startup "xdg-desktop-portal-gnome"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -383,6 +386,9 @@ binds {
     // For example, this is a standard bind to toggle the screen reader (orca).
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
     Mod+P allow-when-locked=true hotkey-overlay-title="Clipboard History" { spawn-sh "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"; }
+    Alt+V hotkey-overlay-title="Vesktop" { spawn-sh "flatpak run dev.vencord.Vesktop"; }
+    Alt+B hotkey-overlay-title="Web Browser" { spawn-sh "flatpak run com.brave.Browser"; }
+
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
@@ -454,11 +460,14 @@ binds {
     Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
 
     // Alternatively, there are commands to move just a single window:
-    // Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
+     Alt+1  { move-window-to-monitor-left; }
+     Alt+2  { move-window-to-monitor-right; }
     // ...
 
     // And you can also move a whole workspace to another monitor:
-    // Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
+    Alt+Left  { move-workspace-to-monitor-left; }
+    Alt+Right  { move-workspace-to-monitor-right; }
+
     // ...
 
     Mod+Page_Down      { focus-workspace-down; }
@@ -617,7 +626,7 @@ binds {
 environment {
     DISPLAY ":0";
 	QT_QPA_PLATFORM "wayland"
-  QT_QPA_PLATFORMTHEME "qt6ct"
+  //QT_QPA_PLATFORMTHEME "qt6ct"
   ELECTRON_OZONE_PLATFORM_HINT "auto"
 	XDG_CURRENT_DESKTOP "niri"
 }
