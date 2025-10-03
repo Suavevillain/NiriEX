@@ -389,7 +389,6 @@ binds {
     Alt+V hotkey-overlay-title="Vesktop" { spawn-sh "flatpak run dev.vencord.Vesktop"; }
     Alt+B hotkey-overlay-title="Web Browser" { spawn-sh "flatpak run com.brave.Browser"; }
 
-
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
     // Using spawn-sh allows to pass multiple arguments together with the command.
@@ -626,7 +625,7 @@ binds {
 environment {
     DISPLAY ":0";
 	QT_QPA_PLATFORM "wayland"
-  //QT_QPA_PLATFORMTHEME "qt6ct"
+  QT_QPA_PLATFORMTHEME "qt6ct"
   ELECTRON_OZONE_PLATFORM_HINT "auto"
 	XDG_CURRENT_DESKTOP "niri"
 }
